@@ -203,20 +203,22 @@ class RFQBundleBuilder:
     ) -> Optional[Dict[str, Any]]:
         """Build DEX-specific swap instructions."""
         try:
-            if dex_quote.source.value == "meteora":
+            dex_source = dex_quote.source.value.lower()
+            
+            if dex_source == "meteora":
                 return await self._build_meteora_instructions(
                     dex_quote, wallet_address, direction
                 )
-            elif dex_quote.source.value == "orca":
+            elif dex_source == "orca":
                 return await self._build_orca_instructions(
                     dex_quote, wallet_address, direction
                 )
-            elif dex_quote.source.value == "raydium":
+            elif dex_source == "raydium":
                 return await self._build_raydium_instructions(
                     dex_quote, wallet_address, direction
                 )
             else:
-                logger.error("Unsupported DEX", dex=dex_quote.source.value)
+                logger.error("Unsupported DEX", dex=dex_source)
                 return None
                 
         except Exception as e:
