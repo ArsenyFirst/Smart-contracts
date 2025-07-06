@@ -1,6 +1,6 @@
 httpx==0.25.2
 aiohttp==3.9.1
-solana-py==0.32.0
+solana-py==0.30.0
 structlog==23.2.0
 asyncio-throttle==1.0.2
 python-dotenv==1.0.0
